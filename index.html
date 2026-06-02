@@ -202,19 +202,8 @@
   </style>
 </head>
 <div class="login-modal" id="loginModal">
-
-
-  <div class="pdf-container">
-
-    <span class="close-pdf" onclick="closePDF()">✕</span>
-
-    <iframe id="pdfFrame" src=""></iframe>
-
-  </div>
-
-</div>
   <div class="login-box">
-<span class="close-btn" onclick="closeLogin()">✕</span>
+   <span class="close-btn" onclick="closeLogin()">✕</span>
 
     <h2>ورود به بخش اسناد</h2>
 
@@ -234,24 +223,32 @@
 let selectedPDF = "";
 
 function openLogin(pdfFile){
+
   selectedPDF = pdfFile;
+
   document.getElementById("loginModal").style.display = "flex";
 }
 
-function checkLogin()
+function checkLogin(){
 
   const username = document.getElementById("username").value;
+
   const password = document.getElementById("password").value;
 
   if(username === "admin" && password === "1234"){
 
-  window.open(selectedPDF, "_blank");
+    window.open(selectedPDF, "_blank");
 
-closeLogin();
+    closeLogin();
 
-closeLogin();
+  }else{
 
+    document.getElementById("errorMessage").innerText =
+    "نام کاربری یا رمز عبور اشتباه است";
+
+  }
 }
+
 function closeLogin(){
 
   document.getElementById("loginModal").style.display = "none";
@@ -262,6 +259,7 @@ function closeLogin(){
 
   document.getElementById("errorMessage").innerText = "";
 }
+
 </script>
 <body>
 
