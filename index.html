@@ -10,7 +10,66 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+.login-modal{
+  position:fixed;
+  top:0;
+  right:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.45);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
 
+.login-box{
+  background:white;
+  padding:35px;
+  border-radius:24px;
+  width:90%;
+  max-width:340px;
+  text-align:center;
+  box-shadow:0 12px 35px rgba(0,0,0,0.18);
+}
+
+.login-box h2{
+  margin-bottom:25px;
+  color:#c62828;
+}
+
+.login-box input{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-family:'Vazirmatn', sans-serif;
+  font-size:15px;
+  box-sizing:border-box;
+}
+
+.login-box button{
+  width:100%;
+  padding:14px;
+  background:#c62828;
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-family:'Vazirmatn', sans-serif;
+  cursor:pointer;
+}
+
+.login-box button:hover{
+  opacity:0.92;
+}
+
+#errorMessage{
+  color:red;
+  margin-top:12px;
+  font-size:14px;
+}
     body{
   margin:0;
   padding:0;
@@ -118,7 +177,54 @@
 }
   </style>
 </head>
+<div class="login-modal" id="loginModal">
 
+  <div class="login-box">
+
+    <h2>ورود به بخش اسناد</h2>
+
+    <input type="text" id="username" placeholder="نام کاربری">
+
+    <input type="password" id="password" placeholder="رمز عبور">
+
+    <button onclick="checkLogin()">ورود</button>
+
+    <p id="errorMessage"></p>
+
+  </div>
+
+</div>
+<script>
+
+let selectedPDF = "";
+
+function openLogin(pdfFile){
+  selectedPDF = pdfFile;
+  document.getElementById("loginModal").style.display = "flex";
+}
+
+function checkLogin(){
+
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if(username === "admin" && password === "1234"){
+
+    window.open(selectedPDF, "_blank");
+
+    document.getElementById("loginModal").style.display = "none";
+
+    document.getElementById("errorMessage").innerText = "";
+
+  }else{
+
+    document.getElementById("errorMessage").innerText =
+    "نام کاربری یا رمز عبور اشتباه است";
+
+  }
+}
+
+</script>
 <body>
 
   <div class="container">
@@ -158,17 +264,17 @@
 
       <div class="pdf-section">
 
-        <a class="pdf-button" href="CEO Loby Renders.pdf" target="_blank">
-          📷 تصاویر شبیه سازی بازسازی
-        </a>
+        <a class="pdf-button" href="#" onclick="openLogin('CEO Loby Renders.pdf')">
+  📷 تصاویر شبیه سازی بازسازی
+</a>
 
-        <a class="pdf-button" href="CEO Plans.pdf" target="_blank">
-          📐 نقشه های بازسازی
-        </a>
+<a class="pdf-button" href="#" onclick="openLogin('CEO Plans.pdf')">
+  📐 نقشه های بازسازی
+</a>
 
-        <a class="pdf-button" href="Costs.pdf" target="_blank">
-          💰 گزارش هزینه و امور انجام شده
-        </a>
+<a class="pdf-button" href="#" onclick="openLogin('Costs.pdf')">
+  💰 گزارش هزینه و امور انجام شده
+</a>
 
       </div>
       
