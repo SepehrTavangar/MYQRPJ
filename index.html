@@ -230,7 +230,20 @@ function openLogin(pdfFile){
 
   document.getElementById("loginModal").style.display = "flex";
 }
+document.addEventListener("keydown", function(event){
 
+  if(event.key === "Enter"){
+
+    const modal =
+    document.getElementById("loginModal").style.display;
+
+    if(modal === "flex"){
+
+      checkLogin();
+
+    }
+  }
+});
 function checkLogin(){
 
   const username = document.getElementById("username").value;
@@ -239,7 +252,7 @@ function checkLogin(){
 
   if(username === "504571" && password === "123456789"){
 
-    window.open(selectedPDF, "_blank");
+   window.open(selectedPDF + "#toolbar=0", "_blank");
 
     closeLogin();
 
@@ -261,6 +274,11 @@ function closeLogin(){
 
   document.getElementById("errorMessage").innerText = "";
 }
+document.addEventListener("contextmenu", function(event){
+
+  event.preventDefault();
+
+});
 
 </script>
 <body>
