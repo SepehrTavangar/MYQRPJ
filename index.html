@@ -161,6 +161,15 @@
   font-weight:bold;
   box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
+.clickable-vip{
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.clickable-vip:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(0,0,0,0.12);
+}
 .logo-box{
   text-align:center;
   margin-bottom:20px;
@@ -186,6 +195,8 @@
 .close-btn:hover{
   color:#c62828;
 }
+
+
   </style>
 </head>
 <div class="login-modal" id="loginModal">
@@ -299,9 +310,12 @@ function closeLogin(){
 
       </div>
       
-<div class="vip-box">
-         اطلاعات تخصصی
-      </div>
+<div class="vip-box clickable-vip"
+onclick="openLogin('Technical Info.pdf')">
+
+  اطلاعات تخصصی
+
+</div>
     </div>
 
   </div>
