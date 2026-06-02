@@ -175,11 +175,23 @@
 .logo-box img:hover{
   transform:translateY(-3px);
 }
+.close-btn{
+  float:left;
+  font-size:22px;
+  cursor:pointer;
+  color:#999;
+  transition:0.2s;
+}
+
+.close-btn:hover{
+  color:#c62828;
+}
   </style>
 </head>
 <div class="login-modal" id="loginModal">
 
   <div class="login-box">
+<span class="close-btn" onclick="closeLogin()">✕</span>
 
     <h2>ورود به بخش اسناد</h2>
 
@@ -208,11 +220,11 @@ function checkLogin(){
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  if(username === "admin" && password === "1234"){
+  if(username === "504571" && password === "123456"){
 
     window.open(selectedPDF, "_blank");
 
-    document.getElementById("loginModal").style.display = "none";
+closeLogin();
 
     document.getElementById("errorMessage").innerText = "";
 
@@ -223,7 +235,16 @@ function checkLogin(){
 
   }
 }
+function closeLogin(){
 
+  document.getElementById("loginModal").style.display = "none";
+
+  document.getElementById("username").value = "";
+
+  document.getElementById("password").value = "";
+
+  document.getElementById("errorMessage").innerText = "";
+}
 </script>
 <body>
 
